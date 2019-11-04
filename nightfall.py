@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 # Visual indication of time using blinkstick
 # Copyright (C) 2019  Stephanie Hobson
 #
@@ -85,7 +85,7 @@ for key in colors:
     if this_time > current_time:
         to_color = key['color']
         to_time = datetime.datetime.strptime(key['time'], '%H:%M:%S').time()
-        # print 'next time ' + str(to_time)
+        # print('next time ' + str(to_time))
         break
     else:
         from_color = key['color']
@@ -102,7 +102,7 @@ green = get_step_color(from_color[1], to_color[1], transition_duration, transiti
 blue = get_step_color(from_color[2], to_color[2], transition_duration, transition_progress)
 
 for bstick in blinkstick.find_all():
-    print "setting color"
+    print("setting color")
     bstick.set_color(channel=0, index=0, red=red, green=green, blue=blue, name=None, hex=None)
 
 print("...done")
