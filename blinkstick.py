@@ -240,13 +240,13 @@ class BlinkStick(object):
 
     def _usb_get_string(self, device, index):
         try:
-            return usb.util.get_string(device, 256, index)
+            return usb.util.get_string(device, index)
         except usb.USBError:
             # Could not communicate with BlinkStick device
             # attempt to find it again based on serial
 
             if self._refresh_device():
-                return usb.util.get_string(self.device, 256, index)
+                return usb.util.get_string(self.device, index)
             else:
                 raise BlinkStickException("Could not communicate with BlinkStick {0} - it may have been removed".format(self.bs_serial))
 
