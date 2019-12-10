@@ -29,19 +29,23 @@ def get_step_color(from_color, to_color, transition_duration, transition_progres
     return new_color
 
 parser = argparse.ArgumentParser(description='Visual indication of time using blinkstick')
+parser.add_argument('-q', '--quiet', dest='quiet', action='store_true',
+                    help='suppress normal output')
 parser.add_argument('-t', '--time', dest='time',
                     type=str,
                     help='UTC formated time (e.g. 20:07:00)')
 args = parser.parse_args()
 
-print("Starting...")
+if not args.quiet:
+    print("Starting...")
 
 if args.time:
     current_time = datetime.datetime.strptime(args.time, '%H:%M:%S').time()
 else:
     current_time = datetime.datetime.today().time()
 
-print('current time:' + str(current_time))
+if not args.quiet:
+    print('current time:' + str(current_time))
 
 colors = [
     {
@@ -101,11 +105,9 @@ green = get_step_color(from_color[1], to_color[1], transition_duration, transiti
 blue = get_step_color(from_color[2], to_color[2], transition_duration, transition_progress)
 
 for bstick in blinkstick.find_all():
-    print("setting color")
+    if not args.quiet:
+        print("setting color")
     bstick.set_color(channel=0, index=0, red=red, green=green, blue=blue, name=None, hex=None)
 
-print("...done")
-
-
-
-
+if not args.quiet:
+    print("...done")
