@@ -18,25 +18,30 @@
 import datetime, argparse
 import blinkstick
 
-def get_step_color(from_color, to_color, transition_duration, transition_progress):
+def get_step_color(from_color, to_color, transition_duration, transition_progress, verbose):
     transition_range =  to_color - from_color
-    # print(transition_range)
+    if verbose:
+        print('  %s' % transition_range)
     single_step = transition_range / transition_duration
-    # print(single_step)
+    if verbose:
+        print('  %s' % single_step)
     current_step = single_step * transition_progress
-    # print(current_step)
+    if verbose:
+        print('  %s' % current_step)
     new_color = from_color + current_step
     return new_color
 
 parser = argparse.ArgumentParser(description='Visual indication of time using blinkstick')
 parser.add_argument('-q', '--quiet', dest='quiet', action='store_true',
                     help='suppress normal output')
+parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                    help='enable extra debugging output')
 parser.add_argument('-t', '--time', dest='time',
                     type=str,
                     help='UTC formated time (e.g. 20:07:00)')
 args = parser.parse_args()
 
-if not args.quiet:
+if not args.quiet or args.verbose:
     print("Starting...")
 
 if args.time:
@@ -44,7 +49,7 @@ if args.time:
 else:
     current_time = datetime.datetime.today().time()
 
-if not args.quiet:
+if not args.quiet or args.verbose:
     print('current time:' + str(current_time))
 
 colors = [
@@ -88,7 +93,8 @@ for key in colors:
     if this_time > current_time:
         to_color = key['color']
         to_time = datetime.datetime.strptime(key['time'], '%H:%M:%S').time()
-        # print('next time ' + str(to_time))
+        if args.verbose:
+            print('next time ' + str(to_time))
         break
     else:
         from_color = key['color']
@@ -98,16 +104,23 @@ transition_duration_time = (datetime.datetime.combine(datetime.date.today(), to_
 transition_duration = transition_duration_time.total_seconds()
 transition_progress_time = (datetime.datetime.combine(datetime.date.today(), current_time) - datetime.datetime.combine(datetime.date.today(), from_time))
 transition_progress = transition_progress_time.total_seconds()
-# print(str(transition_progress))
+if args.verbose:
+    print(str(transition_progress))
 
-red = get_step_color(from_color[0], to_color[0], transition_duration, transition_progress)
-green = get_step_color(from_color[1], to_color[1], transition_duration, transition_progress)
-blue = get_step_color(from_color[2], to_color[2], transition_duration, transition_progress)
+if args.verbose:
+    print('red:')
+red = get_step_color(from_color[0], to_color[0], transition_duration, transition_progress, args.verbose)
+if args.verbose:
+    print('green:')
+green = get_step_color(from_color[1], to_color[1], transition_duration, transition_progress, args.verbose)
+if args.verbose:
+    print('blue:')
+blue = get_step_color(from_color[2], to_color[2], transition_duration, transition_progress, args.verbose)
 
 for bstick in blinkstick.find_all():
-    if not args.quiet:
+    if not args.quiet or args.verbose:
         print("setting color")
     bstick.set_color(channel=0, index=0, red=red, green=green, blue=blue, name=None, hex=None)
 
-if not args.quiet:
+if not args.quiet or args.verbose:
     print("...done")
