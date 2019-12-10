@@ -28,11 +28,10 @@ def get_step_color(from_color, to_color, transition_duration, transition_progres
     new_color = from_color + current_step
     return new_color
 
-parser = argparse.ArgumentParser(description='foo')
+parser = argparse.ArgumentParser(description='Visual indication of time using blinkstick')
 parser.add_argument('-t', '--time', dest='time',
                     type=str,
-                    help='UTC formated time'
-                    '20:07:00')
+                    help='UTC formated time (e.g. 20:07:00)')
 args = parser.parse_args()
 
 print("Starting...")
