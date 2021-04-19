@@ -17,6 +17,7 @@
 
 import datetime, argparse
 import blinkstick
+import usb
 
 def get_step_color(from_color, to_color, transition_duration, transition_progress, verbose):
     transition_range =  to_color - from_color
@@ -120,7 +121,11 @@ blue = get_step_color(from_color[2], to_color[2], transition_duration, transitio
 for bstick in blinkstick.find_all():
     if not args.quiet or args.verbose:
         print("setting color")
-    bstick.set_color(channel=0, index=0, red=red, green=green, blue=blue, name=None, hex=None)
+    try:
+        bstick.set_color(channel=0, index=0, red=red, green=green, blue=blue, name=None, hex=None)
+    except usb.USBError as e:
+        if not args.quiet or args.verbose:
+            print("failed: %s" % e)
 
 if not args.quiet or args.verbose:
     print("...done")
