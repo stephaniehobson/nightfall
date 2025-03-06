@@ -55,31 +55,43 @@ if not args.quiet or args.verbose:
 
 colors = [
     {
-        'time': '20:00:00',
+        'time': '17:00:00',
         'color': [0, 0, 0] #off
     },
     {
-        'time': '20:30:00',
+        'time': '17:30:00',
         'color': [102, 255, 255] #sky - whatevs
     },
     {
-        'time': '21:00:00',
+        'time': '18:30:00',
+        'color': [255, 102, 255] #pink - brush teeth
+    },
+    {
+        'time': '19:00:00',
+        'color': [60, 0, 128] #darkpurple - boring
+    },
+    {
+        'time': '19:30:00',
+        'color': [102, 255, 255] #sky - whatevs
+    },
+    {
+        'time': '20:45:00',
         'color': [250, 200, 0] #yellow - don't start anything new
     },
     {
-        'time': '22:00:00',
+        'time': '21:00:00',
         'color': [255, 30, 0] #burnt orange - finish up, head to bed
     },
     {
-        'time': '22:30:00',
+        'time': '21:15:00',
         'color': [255, 0, 0] #red - go to bed RIGHT NOW
     },
     {
-        'time': '23:30:00',
+        'time': '21:50:00',
         'color': [135, 0, 0] #dark red - there's no help for you
     },
     {
-        'time': '23:59:59',
+        'time': '23:00:00',
         'color': [0, 0, 0] #off
     }
 ]
