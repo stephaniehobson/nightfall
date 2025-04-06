@@ -83,7 +83,7 @@ colors = [
         'color': [255, 30, 0] #burnt orange - finish up, head to bed
     },
     {
-        'time': '21:15:00',
+        'time': '21:20:00',
         'color': [255, 0, 0] #red - go to bed RIGHT NOW
     },
     {
@@ -98,7 +98,7 @@ colors = [
 
 from_color = [0, 0, 0]
 from_time = datetime.datetime.strptime('00:00:00', '%H:%M:%S').time()
-transition_duration = 30
+transition_duration = 10
 transition_progress = 5
 
 for key in colors:
