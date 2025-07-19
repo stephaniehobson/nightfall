@@ -96,10 +96,14 @@ colors = [
     }
 ]
 
-from_color = [0, 0, 0]
-from_time = datetime.datetime.strptime('00:00:00', '%H:%M:%S').time()
+#define speed of transition
 transition_duration = 10
 transition_progress = 5
+
+#set variable values to be over ridden later if a better match is found
+to_time = datetime.datetime.strptime(colors[0]['time'], '%H:%M:%S').time() 
+from_color = [0, 0, 0]
+from_time = datetime.datetime.strptime('00:00:00', '%H:%M:%S').time() 
 
 for key in colors:
     this_time = datetime.datetime.strptime(key['time'], '%H:%M:%S').time()
@@ -112,6 +116,7 @@ for key in colors:
     else:
         from_color = key['color']
         from_time = datetime.datetime.strptime(key['time'], '%H:%M:%S').time()
+        
 
 transition_duration_time = (datetime.datetime.combine(datetime.date.today(), to_time) - datetime.datetime.combine(datetime.date.today(), from_time))
 transition_duration = transition_duration_time.total_seconds()
