@@ -101,7 +101,8 @@ transition_duration = 10
 transition_progress = 5
 
 #set variable values to be over ridden later if a better match is found
-to_time = datetime.datetime.strptime(colors[0]['time'], '%H:%M:%S').time() 
+to_time = datetime.datetime.strptime(colors[0]['time'], '%H:%M:%S').time()
+to_color = datetime.datetime.strptime(colors[0]['color'], '%H:%M:%S').time() 
 from_color = [0, 0, 0]
 from_time = datetime.datetime.strptime('00:00:00', '%H:%M:%S').time() 
 
