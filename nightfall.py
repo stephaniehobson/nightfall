@@ -23,6 +23,10 @@ def get_step_color(from_color, to_color, transition_duration, transition_progres
     transition_range =  to_color - from_color
     if verbose:
         print('  %s' % transition_range)
+    if transition_duration == 0:
+        if verbose:
+            print('  transition_duration is 0, returning from_color')
+        return from_color
     single_step = transition_range / transition_duration
     if verbose:
         print('  %s' % single_step)
@@ -100,24 +104,33 @@ colors = [
 transition_duration = 10
 transition_progress = 5
 
-#set variable values to be over ridden later if a better match is found
-to_time = datetime.datetime.strptime(colors[0]['time'], '%H:%M:%S').time()
-to_color = datetime.datetime.strptime(colors[0]['color'], '%H:%M:%S').time() 
-from_color = [0, 0, 0]
-from_time = datetime.datetime.strptime('00:00:00', '%H:%M:%S').time() 
-
-for key in colors:
+# Always resolve a color and time, even if current_time is outside the defined ranges
+from_color = colors[0]['color']
+from_time = datetime.datetime.strptime(colors[0]['time'], '%H:%M:%S').time()
+to_color = colors[0]['color']
+to_time = from_time
+found = False
+for index, key in enumerate(colors):
     this_time = datetime.datetime.strptime(key['time'], '%H:%M:%S').time()
-    if this_time > current_time:
+    if current_time < this_time:
         to_color = key['color']
-        to_time = datetime.datetime.strptime(key['time'], '%H:%M:%S').time()
+        to_time = this_time
+        # Use previous color/time if available, else first
+        if index > 0:
+            from_color = colors[index-1]['color']
+            from_time = datetime.datetime.strptime(colors[index-1]['time'], '%H:%M:%S').time()
+        found = True
         if args.verbose:
             print('next time ' + str(to_time))
         break
     else:
         from_color = key['color']
-        from_time = datetime.datetime.strptime(key['time'], '%H:%M:%S').time()
-        
+        from_time = this_time
+
+# If current_time is after the last color, use the last color for both from and to
+if not found:
+    to_color = from_color
+    to_time = from_time
 
 transition_duration_time = (datetime.datetime.combine(datetime.date.today(), to_time) - datetime.datetime.combine(datetime.date.today(), from_time))
 transition_duration = transition_duration_time.total_seconds()
