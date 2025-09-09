@@ -64,10 +64,14 @@ colors = [
     },
     {
         'time': '17:30:00',
-        'color': [102, 255, 255] #sky - whatevs
+        'color': [102, 255, 255] #sky 
     },
     {
-        'time': '18:30:00',
+        'time': '18:40:00',
+        'color': [102, 255, 255] #sky
+    },
+    {
+        'time': '18:45:00',
         'color': [255, 102, 255] #pink - brush teeth
     },
     {
@@ -75,8 +79,12 @@ colors = [
         'color': [60, 0, 128] #darkpurple - boring
     },
     {
-        'time': '19:30:00',
-        'color': [102, 255, 255] #sky - whatevs
+        'time': '19:45:00',
+        'color': [60, 0, 128] #darkpurple - boring
+    },
+    {
+        'time': '20:00:00',
+        'color': [102, 255, 255] #sky
     },
     {
         'time': '20:45:00',
@@ -87,7 +95,7 @@ colors = [
         'color': [255, 30, 0] #burnt orange - finish up, head to bed
     },
     {
-        'time': '21:20:00',
+        'time': '21:15:00',
         'color': [255, 0, 0] #red - go to bed RIGHT NOW
     },
     {
