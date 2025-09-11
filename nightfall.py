@@ -67,24 +67,16 @@ colors = [
         'color': [102, 255, 255] #sky 
     },
     {
-        'time': '18:40:00',
+        'time': '18:44:59',
         'color': [102, 255, 255] #sky
     },
     {
         'time': '18:45:00',
-        'color': [255, 102, 255] #pink - brush teeth
-    },
-    {
-        'time': '19:00:00',
-        'color': [60, 0, 128] #darkpurple - boring
-    },
-    {
-        'time': '19:45:00',
-        'color': [60, 0, 128] #darkpurple - boring
+        'color': [60, 0, 128] #darkpurple
     },
     {
         'time': '20:00:00',
-        'color': [102, 255, 255] #sky
+        'color': [60, 0, 128] #darkpurple
     },
     {
         'time': '20:45:00',
