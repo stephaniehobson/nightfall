@@ -57,48 +57,92 @@ else:
 if not args.quiet or args.verbose:
     print('current time:' + str(current_time))
 
+# colors = [
+#     {
+#         'time': '17:00:00',
+#         'color': [0, 0, 0] #off
+#     },
+#     {
+#         'time': '17:30:00',
+#         'color': [102, 255, 255] #sky 
+#     },
+#     {
+#         'time': '18:44:59',
+#         'color': [102, 255, 255] #sky
+#     },
+#     {
+#         'time': '18:45:00',
+#         'color': [60, 0, 128] #darkpurple
+#     },
+#     {
+#         'time': '20:00:00',
+#         'color': [60, 0, 128] #darkpurple
+#     },
+#     {
+#         'time': '20:45:00',
+#         'color': [250, 200, 0] #yellow - don't start anything new
+#     },
+#     {
+#         'time': '21:00:00',
+#         'color': [255, 30, 0] #burnt orange - finish up, head to bed
+#     },
+#     {
+#         'time': '21:15:00',
+#         'color': [255, 0, 0] #red - go to bed RIGHT NOW
+#     },
+#     {
+#         'time': '21:50:00',
+#         'color': [135, 0, 0] #dark red - there's no help for you
+#     },
+#     {
+#         'time': '23:00:00',
+#         'color': [0, 0, 0] #off
+#     }
+# ]
+
 colors = [
     {
-        'time': '17:00:00',
+        'time': '17:40:00',
         'color': [0, 0, 0] #off
     },
     {
-        'time': '17:30:00',
+        'time': '18:20:00',
         'color': [102, 255, 255] #sky 
     },
     {
-        'time': '18:44:59',
+        'time': '19:24:59',
         'color': [102, 255, 255] #sky
     },
     {
-        'time': '18:45:00',
+        'time': '19:25:00',
         'color': [60, 0, 128] #darkpurple
     },
     {
-        'time': '20:00:00',
+        'time': '20:40:00',
         'color': [60, 0, 128] #darkpurple
     },
     {
-        'time': '20:45:00',
+        'time': '21:25:00',
         'color': [250, 200, 0] #yellow - don't start anything new
     },
     {
-        'time': '21:00:00',
+        'time': '21:50:00',
         'color': [255, 30, 0] #burnt orange - finish up, head to bed
     },
     {
-        'time': '21:15:00',
+        'time': '21:55:00',
         'color': [255, 0, 0] #red - go to bed RIGHT NOW
     },
     {
-        'time': '21:50:00',
+        'time': '22:30:00',
         'color': [135, 0, 0] #dark red - there's no help for you
     },
     {
-        'time': '23:00:00',
+        'time': '22:40:00',
         'color': [0, 0, 0] #off
     }
 ]
+
 
 #define speed of transition
 transition_duration = 10
