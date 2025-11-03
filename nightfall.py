@@ -102,47 +102,82 @@ if not args.quiet or args.verbose:
 
 colors = [
     {
-        'time': '17:40:00',
+        'time': '05:49:00',
         'color': [0, 0, 0] #off
     },
     {
-        'time': '18:20:00',
+        'time': '05:50:00',
+        'color': [0, 255, 0] # green - wake up
+    },
+    {
+        'time': '06:15:00',
+        'color': [0, 255, 0] # green 
+    },
+    {
+        'time': '06:20:00',
+        'color': [255, 255, 0] # yellow - eat
+    },
+    {
+        'time': '07:15:00',
+        'color': [255, 255, 0] # yellow
+    },
+    {
+        'time': '07:20:00',
+        'color': [255, 0, 0] # red - get ready
+    },
+    {
+        'time': '08:59:00',
+        'color': [255, 0, 0] # red - get ready
+    },
+    {
+        'time': '09:00:00',
+        'color': [0, 0, 0] #off
+    },
+    {
+        'time': '16:00:00',
+        'color': [0, 0, 0] #off
+    },
+    {
+        'time': '16:30:00',
         'color': [102, 255, 255] #sky 
     },
     {
-        'time': '19:24:59',
+        'time': '17:59:59',
         'color': [102, 255, 255] #sky
     },
     {
-        'time': '19:25:00',
+        'time': '18:00:00',
         'color': [60, 0, 128] #darkpurple
     },
     {
-        'time': '20:40:00',
+        'time': '18:59:00',
         'color': [60, 0, 128] #darkpurple
     },
     {
-        'time': '21:25:00',
+        'time': '19:00:00',
+        'color': [102, 255, 255] #sky
+    },
+    {
+        'time': '20:05:00',
         'color': [250, 200, 0] #yellow - don't start anything new
     },
     {
-        'time': '21:50:00',
+        'time': '20:20:00',
         'color': [255, 30, 0] #burnt orange - finish up, head to bed
     },
     {
-        'time': '21:55:00',
+        'time': '21:35:00',
         'color': [255, 0, 0] #red - go to bed RIGHT NOW
     },
     {
-        'time': '22:30:00',
+        'time': '21:50:00',
         'color': [135, 0, 0] #dark red - there's no help for you
     },
     {
-        'time': '22:40:00',
+        'time': '23:00:00',
         'color': [0, 0, 0] #off
     }
 ]
-
 
 #define speed of transition
 transition_duration = 10
