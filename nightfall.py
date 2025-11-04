@@ -114,20 +114,24 @@ colors = [
         'color': [0, 255, 0] # green 
     },
     {
-        'time': '06:20:00',
+        'time': '06:30:00',
+        'color': [0, 255, 0] # green 
+    },
+    {
+        'time': '06:40:00',
         'color': [255, 255, 0] # yellow - eat
     },
     {
-        'time': '07:15:00',
+        'time': '07:35:00',
         'color': [255, 255, 0] # yellow
     },
     {
-        'time': '07:20:00',
+        'time': '07:40:00',
         'color': [255, 0, 0] # red - get ready
     },
     {
         'time': '08:59:00',
-        'color': [255, 0, 0] # red - get ready
+        'color': [255, 0, 0] # red
     },
     {
         'time': '09:00:00',
