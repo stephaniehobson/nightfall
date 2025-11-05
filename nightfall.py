@@ -57,61 +57,15 @@ else:
 if not args.quiet or args.verbose:
     print('current time:' + str(current_time))
 
-# colors = [
-#     {
-#         'time': '17:00:00',
-#         'color': [0, 0, 0] #off
-#     },
-#     {
-#         'time': '17:30:00',
-#         'color': [102, 255, 255] #sky 
-#     },
-#     {
-#         'time': '18:44:59',
-#         'color': [102, 255, 255] #sky
-#     },
-#     {
-#         'time': '18:45:00',
-#         'color': [60, 0, 128] #darkpurple
-#     },
-#     {
-#         'time': '20:00:00',
-#         'color': [60, 0, 128] #darkpurple
-#     },
-#     {
-#         'time': '20:45:00',
-#         'color': [250, 200, 0] #yellow - don't start anything new
-#     },
-#     {
-#         'time': '21:00:00',
-#         'color': [255, 30, 0] #burnt orange - finish up, head to bed
-#     },
-#     {
-#         'time': '21:15:00',
-#         'color': [255, 0, 0] #red - go to bed RIGHT NOW
-#     },
-#     {
-#         'time': '21:50:00',
-#         'color': [135, 0, 0] #dark red - there's no help for you
-#     },
-#     {
-#         'time': '23:00:00',
-#         'color': [0, 0, 0] #off
-#     }
-# ]
 
 colors = [
     {
-        'time': '05:49:00',
+        'time': '06:00:00',
         'color': [0, 0, 0] #off
     },
     {
-        'time': '05:50:00',
-        'color': [0, 255, 0] # green - wake up
-    },
-    {
         'time': '06:15:00',
-        'color': [0, 255, 0] # green 
+        'color': [0, 255, 0] # green - wake up
     },
     {
         'time': '06:30:00',
@@ -162,19 +116,19 @@ colors = [
         'color': [102, 255, 255] #sky
     },
     {
-        'time': '20:05:00',
+        'time': '20:30:00',
         'color': [250, 200, 0] #yellow - don't start anything new
     },
     {
-        'time': '20:20:00',
+        'time': '20:45:00',
         'color': [255, 30, 0] #burnt orange - finish up, head to bed
     },
     {
-        'time': '21:35:00',
+        'time': '21:00:00',
         'color': [255, 0, 0] #red - go to bed RIGHT NOW
     },
     {
-        'time': '21:50:00',
+        'time': '21:30:00',
         'color': [135, 0, 0] #dark red - there's no help for you
     },
     {
