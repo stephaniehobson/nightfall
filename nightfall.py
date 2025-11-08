@@ -68,11 +68,11 @@ colors = [
         'color': [0, 255, 0] # green - wake up
     },
     {
-        'time': '06:30:00',
+        'time': '06:40:00',
         'color': [0, 255, 0] # green 
     },
     {
-        'time': '06:40:00',
+        'time': '06:45:00',
         'color': [255, 255, 0] # yellow - eat
     },
     {
