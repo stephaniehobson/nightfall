@@ -44,6 +44,9 @@ parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
 parser.add_argument('-t', '--time', dest='time',
                     type=str,
                     help='UTC formated time (e.g. 20:07:00)')
+parser.add_argument('-d', '--day', dest='day',
+                    type=int, choices=range(0, 7),
+                    help='Day of the week (0=Monday, 1=Tuesday, 2=Wednesday, 3=Thursday, 4=Friday, 5=Saturday, 6=Sunday)')
 args = parser.parse_args()
 
 if not args.quiet or args.verbose:
@@ -51,14 +54,100 @@ if not args.quiet or args.verbose:
 
 if args.time:
     current_time = datetime.datetime.strptime(args.time, '%H:%M:%S').time()
+    # Use today's date for weekday check even with custom time
+    current_date = datetime.datetime.today()
 else:
-    current_time = datetime.datetime.today().time()
+    current_date = datetime.datetime.today()
+    current_time = current_date.time()
+
+# Override the day of week if specified
+if args.day is not None:
+    # Calculate the offset to the desired day
+    current_weekday = current_date.weekday()
+    days_offset = args.day - current_weekday
+    current_date = current_date + datetime.timedelta(days=days_offset)
 
 if not args.quiet or args.verbose:
     print('current time:' + str(current_time))
+    print('day of week: %s (%d)' % (current_date.strftime('%A'), current_date.weekday()))
 
 
-colors = [
+weekend_colors = [
+    {
+        'time': '06:00:00',
+        'color': [0, 0, 0] #off
+    },
+    {
+        'time': '06:15:00',
+        'color': [0, 255, 0] # green - wake up
+    },
+    {
+        'time': '06:40:00',
+        'color': [0, 255, 0] # green 
+    },
+    {
+        'time': '06:45:00',
+        'color': [255, 255, 0] # yellow - eat
+    },
+    {
+        'time': '07:35:00',
+        'color': [255, 255, 0] # yellow
+    },
+    {
+        'time': '07:40:00',
+        'color': [102, 255, 255] #sky 
+    },
+    {
+        'time': '08:59:00',
+        'color': [102, 255, 255] #sky 
+    },
+    {
+        'time': '09:00:00',
+        'color': [0, 0, 0] #off
+    },
+    {
+        'time': '16:00:00',
+        'color': [0, 0, 0] #off
+    },
+    {
+        'time': '17:30:00',
+        'color': [102, 255, 255] #sky 
+    },
+    {
+        'time': '18:40:00',
+        'color': [102, 255, 255] #sky
+    },
+    {
+        'time': '18:45:00',
+        'color': [60, 0, 128] #darkpurple
+    },
+    {
+        'time': '20:00:00',
+        'color': [60, 0, 128] #darkpurple
+    },
+    {
+        'time': '20:30:00',
+        'color': [250, 200, 0] #yellow - don't start anything new
+    },
+    {
+        'time': '20:45:00',
+        'color': [255, 30, 0] #burnt orange - finish up, head to bed
+    },
+    {
+        'time': '21:00:00',
+        'color': [255, 0, 0] #red - go to bed RIGHT NOW
+    },
+    {
+        'time': '21:30:00',
+        'color': [135, 0, 0] #dark red - there's no help for you
+    },
+    {
+        'time': '23:00:00',
+        'color': [0, 0, 0] #off
+    }
+]
+
+weekday_colors = [
     {
         'time': '06:00:00',
         'color': [0, 0, 0] #off
@@ -136,6 +225,19 @@ colors = [
 #define speed of transition
 transition_duration = 10
 transition_progress = 5
+
+# Determine if today is a weekday (Monday=0, Sunday=6)
+is_weekday = current_date.weekday() < 5  # Monday-Friday are 0-4
+
+# Set colors based on weekday or weekend
+if is_weekday:
+    colors = weekday_colors
+    if not args.quiet or args.verbose:
+        print('Using weekday colors')
+else:
+    colors = weekend_colors
+    if not args.quiet or args.verbose:
+        print('Using weekend colors')
 
 # Always resolve a color and time, even if current_time is outside the defined ranges
 from_color = colors[0]['color']
