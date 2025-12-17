@@ -114,11 +114,11 @@ weekend_colors = [
         'color': [102, 255, 255] #sky 
     },
     {
-        'time': '18:40:00',
+        'time': '18:35:00',
         'color': [102, 255, 255] #sky
     },
     {
-        'time': '18:45:00',
+        'time': '18:40:00',
         'color': [60, 0, 128] #darkpurple
     },
     {
@@ -189,11 +189,11 @@ weekday_colors = [
         'color': [102, 255, 255] #sky 
     },
     {
-        'time': '18:40:00',
+        'time': '18:35:00',
         'color': [102, 255, 255] #sky
     },
     {
-        'time': '18:45:00',
+        'time': '18:40:00',
         'color': [60, 0, 128] #darkpurple
     },
     {
