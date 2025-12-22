@@ -227,7 +227,8 @@ transition_duration = 10
 transition_progress = 5
 
 # Determine if today is a weekday (Monday=0, Sunday=6)
-is_weekday = current_date.weekday() < 5  # Monday-Friday are 0-4
+# is_weekday = current_date.weekday() < 5  # Monday-Friday are 0-4
+is_weekday = False # vacay!
 
 # Set colors based on weekday or weekend
 if is_weekday:
