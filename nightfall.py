@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import datetime, argparse
+import datetime, argparse, random, time
 import blinkstick
 import usb
 
@@ -36,6 +36,71 @@ def get_step_color(from_color, to_color, transition_duration, transition_progres
     new_color = from_color + current_step
     return new_color
 
+def christmas_light_mode(bstick, verbose=False):
+    """
+    Christmas light mode: randomly cycles through festive colors with smooth transitions
+    """
+    christmas_colors = [
+        [255, 0, 0],      # Red
+        [0, 255, 0],      # Green
+        [255, 255, 255],  # White
+        [255, 215, 0],    # Gold
+        [0, 100, 255],    # Blue
+        [128, 0, 128],    # Purple
+        [255, 192, 203],  # Pink
+        [64, 224, 208],   # Turquoise
+        [65, 105, 225],   # Royal Blue
+    ]
+    
+    fade_duration = 5  # seconds to fade between colors
+    hold_duration = 20  # seconds to hold the color
+    update_interval = 0.1  # seconds between updates (smoother = smaller value)
+    
+    current_color = [0, 0, 0]  # Start from off
+    
+    if verbose:
+        print("Starting Christmas light mode (Press Ctrl+C to stop)")
+    
+    try:
+        while True:
+            # Pick a random target color different from the current one
+            target_color = random.choice(christmas_colors)
+            while target_color == current_color:
+                target_color = random.choice(christmas_colors)
+            
+            if verbose:
+                print(f"Transitioning to {target_color}")
+            
+            # Fade to the new color
+            steps = int(fade_duration / update_interval)
+            for step in range(steps + 1):
+                red = get_step_color(current_color[0], target_color[0], fade_duration, step * update_interval, False)
+                green = get_step_color(current_color[1], target_color[1], fade_duration, step * update_interval, False)
+                blue = get_step_color(current_color[2], target_color[2], fade_duration, step * update_interval, False)
+                
+                try:
+                    bstick.set_color(channel=0, index=0, red=int(red), green=int(green), blue=int(blue))
+                except usb.USBError as e:
+                    if verbose:
+                        print(f"USB error: {e}")
+                
+                time.sleep(update_interval)
+            
+            # Update current color to target
+            current_color = target_color
+            
+            if verbose:
+                print(f"Holding color for {hold_duration} seconds")
+            
+            # Hold the color
+            time.sleep(hold_duration)
+            
+    except KeyboardInterrupt:
+        if verbose:
+            print("\nChristmas mode stopped")
+        # Turn off the light
+        bstick.set_color(channel=0, index=0, red=0, green=0, blue=0)
+
 parser = argparse.ArgumentParser(description='Visual indication of time using blinkstick')
 parser.add_argument('-q', '--quiet', dest='quiet', action='store_true',
                     help='suppress normal output')
@@ -47,6 +112,8 @@ parser.add_argument('-t', '--time', dest='time',
 parser.add_argument('-d', '--day', dest='day',
                     type=int, choices=range(0, 7),
                     help='Day of the week (0=Monday, 1=Tuesday, 2=Wednesday, 3=Thursday, 4=Friday, 5=Saturday, 6=Sunday)')
+parser.add_argument('--christmas', dest='christmas', action='store_true',
+                    help='enable Christmas light mode (random color cycling)')
 args = parser.parse_args()
 
 if not args.quiet or args.verbose:
@@ -286,13 +353,19 @@ if args.verbose:
 blue = get_step_color(from_color[2], to_color[2], transition_duration, transition_progress, args.verbose)
 
 for bstick in blinkstick.find_all():
-    if not args.quiet or args.verbose:
-        print("setting color")
-    try:
-        bstick.set_color(channel=0, index=0, red=red, green=green, blue=blue, name=None, hex=None)
-    except usb.USBError as e:
+    if True:
+    #if args.christmas:
         if not args.quiet or args.verbose:
-            print("failed: %s" % e)
+            print("Starting Christmas light mode")
+        christmas_light_mode(bstick, args.verbose)
+    else:
+        if not args.quiet or args.verbose:
+            print("setting color")
+        try:
+            bstick.set_color(channel=0, index=0, red=red, green=green, blue=blue, name=None, hex=None)
+        except usb.USBError as e:
+            if not args.quiet or args.verbose:
+                print("failed: %s" % e)
 
 if not args.quiet or args.verbose:
     print("...done")
