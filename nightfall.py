@@ -353,8 +353,8 @@ if args.verbose:
 blue = get_step_color(from_color[2], to_color[2], transition_duration, transition_progress, args.verbose)
 
 for bstick in blinkstick.find_all():
-    if True:
-    #if args.christmas:
+    #if True:
+    if args.christmas:
         if not args.quiet or args.verbose:
             print("Starting Christmas light mode")
         christmas_light_mode(bstick, args.verbose)
