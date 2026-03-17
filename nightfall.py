@@ -149,20 +149,20 @@ weekend_colors = [
         'color': [0, 255, 0] # green - wake up
     },
     {
-        'time': '06:40:00',
+        'time': '07:25:00',
         'color': [0, 255, 0] # green 
     },
     {
-        'time': '06:45:00',
-        'color': [255, 255, 0] # yellow - eat
+        'time': '07:30:00',
+        'color': [255, 255, 0] # yellow - make breakfast & eat
     },
     {
-        'time': '07:35:00',
+        'time': '08:25:00',
         'color': [255, 255, 0] # yellow
     },
     {
-        'time': '07:40:00',
-        'color': [102, 255, 255] #sky 
+        'time': '08:30:00',
+        'color': [102, 255, 255] #sky - get dressed
     },
     {
         'time': '08:59:00',
@@ -229,15 +229,23 @@ weekday_colors = [
     },
     {
         'time': '06:45:00',
-        'color': [255, 255, 0] # yellow - eat
+        'color': [255, 255, 0] # yellow - make breakfast & eat
     },
     {
-        'time': '07:35:00',
+        'time': '07:45:00',
         'color': [255, 255, 0] # yellow
     },
     {
-        'time': '07:40:00',
-        'color': [255, 0, 0] # red - get ready
+        'time': '07:50:00',
+        'color': [102, 255, 255] #sky - get dressed & go
+    },
+    {
+        'time': '08:15:00',
+        'color': [102, 255, 255] #sky
+    },
+    {
+        'time': '08:20:00',
+        'color': [255, 0, 0] # red - late
     },
     {
         'time': '08:59:00',
