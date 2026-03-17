@@ -193,19 +193,19 @@ weekend_colors = [
         'color': [60, 0, 128] #darkpurple
     },
     {
-        'time': '20:30:00',
+        'time': '20:15:00',
         'color': [250, 200, 0] #yellow - don't start anything new
     },
     {
-        'time': '20:45:00',
+        'time': '20:30:00',
         'color': [255, 30, 0] #burnt orange - finish up, head to bed
     },
     {
-        'time': '21:00:00',
+        'time': '20:45:00',
         'color': [255, 0, 0] #red - go to bed RIGHT NOW
     },
     {
-        'time': '21:30:00',
+        'time': '21:00:00',
         'color': [135, 0, 0] #dark red - there's no help for you
     },
     {
@@ -260,7 +260,7 @@ weekday_colors = [
         'color': [102, 255, 255] #sky
     },
     {
-        'time': '18:35:00',
+        'time': '18:45:00',
         'color': [60, 0, 128] #darkpurple
     },
     {
@@ -268,19 +268,19 @@ weekday_colors = [
         'color': [60, 0, 128] #darkpurple
     },
     {
-        'time': '20:30:00',
+        'time': '20:15:00',
         'color': [250, 200, 0] #yellow - don't start anything new
     },
     {
-        'time': '20:45:00',
+        'time': '20:30:00',
         'color': [255, 30, 0] #burnt orange - finish up, head to bed
     },
     {
-        'time': '21:00:00',
+        'time': '20:45:00',
         'color': [255, 0, 0] #red - go to bed RIGHT NOW
     },
     {
-        'time': '21:30:00',
+        'time': '21:00:00',
         'color': [135, 0, 0] #dark red - there's no help for you
     },
     {
@@ -294,8 +294,8 @@ transition_duration = 10
 transition_progress = 5
 
 # Determine if today is a weekday (Monday=0, Sunday=6)
-# is_weekday = current_date.weekday() < 5  # Monday-Friday are 0-4
-is_weekday = False # vacay!
+is_weekday = current_date.weekday() < 5  # Monday-Friday are 0-4
+# is_weekday = False # vacay!
 
 # Set colors based on weekday or weekend
 if is_weekday:
