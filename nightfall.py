@@ -141,31 +141,39 @@ if not args.quiet or args.verbose:
 
 weekend_colors = [
     {
-        'time': '06:00:00',
+        'time': '05:55:00',
         'color': [0, 0, 0] #off
     },
     {
-        'time': '06:15:00',
-        'color': [0, 255, 0] # green - wake up
+        'time': '06:00:00',
+        'color': [102, 255, 255] #sky - wake up
     },
     {
-        'time': '07:25:00',
+        'time': '06:45:00',
+        'color': [102, 255, 255] #sky
+    },
+    {
+        'time': '06:50:00',
+        'color': [0, 255, 0] # green - eat breakfast
+    },
+    {
+        'time': '07:20:00',
         'color': [0, 255, 0] # green 
     },
     {
         'time': '07:30:00',
-        'color': [255, 255, 0] # yellow - make breakfast & eat
+        'color': [255, 255, 0] # yellow - get dressed & go
     },
     {
-        'time': '08:25:00',
+        'time': '08:00:00',
         'color': [255, 255, 0] # yellow
     },
     {
-        'time': '08:30:00',
-        'color': [102, 255, 255] #sky - get dressed
+        'time': '08:15:00',
+        'color': [102, 255, 255] #sky 
     },
     {
-        'time': '08:59:00',
+        'time': '08:50:00',
         'color': [102, 255, 255] #sky 
     },
     {
@@ -216,43 +224,43 @@ weekend_colors = [
 
 weekday_colors = [
     {
-        'time': '06:00:00',
+        'time': '05:55:00',
         'color': [0, 0, 0] #off
     },
     {
-        'time': '06:15:00',
-        'color': [0, 255, 0] # green - wake up
+        'time': '06:00:00',
+        'color': [102, 255, 255] #sky - wake up
     },
     {
-        'time': '06:40:00',
-        'color': [0, 255, 0] # green 
-    },
-    {
-        'time': '06:45:00',
-        'color': [255, 255, 0] # yellow - make breakfast & eat
-    },
-    {
-        'time': '07:45:00',
-        'color': [255, 255, 0] # yellow
-    },
-    {
-        'time': '07:50:00',
-        'color': [102, 255, 255] #sky - get dressed & go
-    },
-    {
-        'time': '08:15:00',
+        'time': '06:30:00',
         'color': [102, 255, 255] #sky
     },
     {
-        'time': '08:20:00',
-        'color': [255, 0, 0] # red - late
+        'time': '06:40:00',
+        'color': [0, 255, 0] # green - eat breakfast
     },
     {
-        'time': '08:59:00',
+        'time': '06:55:00',
+        'color': [0, 255, 0] # green 
+    },
+    {
+        'time': '07:00:00',
+        'color': [255, 255, 0] # yellow - get dressed & go
+    },
+    {
+        'time': '07:20:00',
+        'color': [255, 255, 0] # yellow
+    },
+    {
+        'time': '07:30:00',
+        'color': [255, 0, 0] # red - time to leave / late
+    },
+    {
+        'time': '08:29:00',
         'color': [255, 0, 0] # red
     },
     {
-        'time': '09:00:00',
+        'time': '08:30:00',
         'color': [0, 0, 0] #off
     },
     {
